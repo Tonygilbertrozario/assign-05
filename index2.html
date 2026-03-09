@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Issue Tracker</title>
+<link rel="shortcut icon" href="assets/github-logo.png" type="image/x-icon">
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-base-200">
+
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="flex items-center justify-center h-screen">
+
+<div class="card bg-base-100 w-96 shadow-xl p-6">
+<img src="assets/github-logo.png" alt="" class="w-14 mx-auto">
+<h2 class="text-2xl font-bold text-center mb-4">Issue Tracker</h2>
+
+<input id="username" type="text" placeholder="Username" class="input input-bordered w-full mb-3">
+
+<input id="password" type="password" placeholder="Password" class="input input-bordered w-full mb-3">
+
+<button onclick="login()" class="btn btn-primary w-full">
+Sign In
+</button>
+
+<p class="text-center text-sm mt-3">
+Demo: admin / admin123
+</p>
+
+</div>
+</div>
+
+
+
+<!-- MAIN PAGE -->
+<div id="mainPage" class="hidden">
+
+<!-- NAVBAR -->
+<div class="navbar bg-base-100 shadow">
+
+<div class="flex-1">
+    <img src="assets/github-logo.png" alt="" class="w-9">
+<a class="text-xl font-bold">Issue Tracker</a>
+</div>
+
+<div class="flex gap-2">
+
+<input id="searchInput" type="text" placeholder="Search" class="input input-bordered">
+
+<button onclick="searchIssue()" class="btn btn-primary">
+Search
+</button>
+
+</div>
+
+</div>
+
+
+<div class="p-6">
+
+<!-- TABS -->
+<div class="flex gap-3 mb-4">
+
+<button id="allBtn" onclick="filterIssues('all')" class="btn btn-primary">
+All (<span id="allCount">0</span>)
+</button>
+
+<button id="openBtn" onclick="filterIssues('open')" class="btn">
+Open (<span id="openCount">0</span>)
+</button>
+
+<button id="closedBtn" onclick="filterIssues('closed')" class="btn">
+Closed (<span id="closedCount">0</span>)
+</button>
+
+</div>
+
+
+<!-- LOADING -->
+<div id="loader" class="text-center hidden">
+
+<span class="loading loading-spinner loading-lg"></span>
+
+</div>
+
+
+<!-- ISSUE GRID -->
+<div id="issueContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+</div>
+
+</div>
+</div>
+
+
+
+<!-- MODAL -->
+<dialog id="issueModal" class="modal">
+
+<div class="modal-box">
+
+<h3 id="modalTitle" class="font-bold text-lg"></h3>
+
+<p id="modalDesc" class="py-2"></p>
+
+<p id="modalAuthor"></p>
+<p id="modalPriority"></p>
+<p id="modalLabel"></p>
+<p id="modalStatus"></p>
+<p id="modalDate"></p>
+
+<div class="modal-action">
+<button class="btn" onclick="closeModal()">Close</button>
+</div>
+
+</div>
+
+</dialog>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
